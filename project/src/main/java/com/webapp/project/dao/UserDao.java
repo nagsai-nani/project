@@ -13,6 +13,8 @@ public interface UserDao {
 	List<User> getUserName(String userName);
 
 	List<User> getAll();
+
+	
 	
 
 }

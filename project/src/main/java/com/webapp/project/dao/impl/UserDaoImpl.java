@@ -29,7 +29,6 @@ public User getByUserName(String userName) {
 	Query query =new Query();
 	query.addCriteria(Criteria.where("userName").is(userName));
 	return template.findOne(query, User.class);
-
 }
 
 
