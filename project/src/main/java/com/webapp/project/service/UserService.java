@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.webapp.project.dao.UserDao;
 import com.webapp.project.models.User;
 import com.webapp.project.request.dto.LoginDto;
+import com.webapp.project.request.dto.UserUpdateDto;
 import com.webapp.project.response.dto.UserResponse;
 
 @Service
@@ -81,6 +82,13 @@ public UserResponse login(LoginDto dto) throws Exception {
 		}
 	
 	return resp;
+}
+
+public void update(UserUpdateDto dto) throws Exception {
+long count =dao.updateUser(dto);
+if(count<=0) {
+	throw new Exception("NO USER FOUND"+dto.getUserName());
+}
 }
 
 }

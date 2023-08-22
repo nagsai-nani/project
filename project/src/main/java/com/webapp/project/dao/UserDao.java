@@ -3,6 +3,7 @@ package com.webapp.project.dao;
 import java.util.List;
 
 import com.webapp.project.models.User;
+import com.webapp.project.request.dto.UserUpdateDto;
 
 public interface UserDao {
 
@@ -13,6 +14,8 @@ public interface UserDao {
 	List<User> getUserName(String userName);
 
 	List<User> getAll();
+
+	long updateUser(UserUpdateDto dto);
 
 	
 	

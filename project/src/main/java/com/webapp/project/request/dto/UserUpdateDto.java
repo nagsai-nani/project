@@ -1,14 +1,12 @@
-package com.webapp.project.models;
+package com.webapp.project.request.dto;
 
-public class User {
+public class UserUpdateDto {
 private String userName;
 private String password;
-private String city;
-private String pincode;
-private String village;
 private String email;
 private String company;
 private String contactNumber;
+
 public String getUserName() {
 	return userName;
 }
@@ -20,24 +18,6 @@ public String getPassword() {
 }
 public void setPassword(String password) {
 	this.password = password;
-}
-public String getCity() {
-	return city;
-}
-public void setCity(String city) {
-	this.city = city;
-}
-public String getPincode() {
-	return pincode;
-}
-public void setPincode(String pincode) {
-	this.pincode = pincode;
-}
-public String getVillage() {
-	return village;
-}
-public void setVillage(String village) {
-	this.village = village;
 }
 public String getEmail() {
 	return email;
@@ -57,5 +37,7 @@ public String getContactNumber() {
 public void setContactNumber(String contactNumber) {
 	this.contactNumber = contactNumber;
 }
+
+
 
 }

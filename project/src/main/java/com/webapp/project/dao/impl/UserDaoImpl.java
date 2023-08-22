@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import com.mongodb.client.result.UpdateResult;
 import com.webapp.project.dao.UserDao;
 import com.webapp.project.models.User;
 import com.webapp.project.repository.UserRepository;
+import com.webapp.project.request.dto.UserUpdateDto;
 
 @Repository
 public class UserDaoImpl implements UserDao{
@@ -42,5 +45,18 @@ public List<User> getUserName(String userName) {
 @Override
 public List<User> getAll() {
 return template.findAll(User.class);
+}
+
+@Override
+public long updateUser(UserUpdateDto dto) {
+	Query query =new Query();
+	query.addCriteria(Criteria.where("userName").is(dto.getUserName()));
+	Update update=new Update();
+	update.set("company", dto.getCompany());
+	update.set("contactNumber", dto.getContactNumber());
+	update.set("email", dto.getEmail());
+	update.set("password", dto.getPassword());
+	UpdateResult rs=template.updateFirst(query, update, User.class);
+	return rs.getModifiedCount();
 }
 }
