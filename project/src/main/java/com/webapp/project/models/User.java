@@ -7,6 +7,7 @@ private String city;
 private String pincode;
 private String village;
 private String email;
+private String company;
 public String getUserName() {
 	return userName;
 }
@@ -42,6 +43,12 @@ public String getEmail() {
 }
 public void setEmail(String email) {
 	this.email = email;
+}
+public String getCompany() {
+	return company;
+}
+public void setCompany(String company) {
+	this.company = company;
 }
 
 }

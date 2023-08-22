@@ -20,6 +20,9 @@ public User save(User user) throws Exception {
 	if(bean!=null) {
 		throw new Exception("USER  "+bean.getUserName()+"  ALREADY EXIST. DUPLICATES ARE NOT ALLOWED");
 	}
+	if(user.getCompany()==null||user.getCompany().isEmpty()) {
+		user.setCompany("VNC IT INSTITUTE");
+	}
 	
 	return dao.save(user);
 }
