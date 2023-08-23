@@ -13,7 +13,7 @@ public interface UserDao {
 	
 	List<User> getUserName(String userName);
 
-	List<User> getAll();
+	List<User> getAll(String key, boolean order);
 
 	long updateUser(UserUpdateDto dto);
 

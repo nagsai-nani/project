@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webapp.project.models.User;
@@ -35,8 +36,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/get/all")
-	public ResponseEntity<List<UserResponse>> getAll(){
-		return ResponseEntity.ok(service.getAll());
+	public ResponseEntity<List<UserResponse>> getAll(@RequestParam(value = "key",required = true)String key,@RequestParam(value = "order",required = true)boolean order){
+		return ResponseEntity.ok(service.getAll(key,order));
 	}
 	
 	@PostMapping("/login")

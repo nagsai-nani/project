@@ -2,7 +2,11 @@ package com.webapp.project.dao.impl;
 
 import java.util.List;
 
+import javax.swing.SortOrder;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -43,8 +47,17 @@ public List<User> getUserName(String userName) {
 }
 
 @Override
-public List<User> getAll() {
-return template.findAll(User.class);
+public List<User> getAll(String key,boolean order) {
+	Query query =new  Query();
+	if(key!=null) {
+		if(order ==true) {
+			query.with(Sort.by(Sort.Direction.ASC,key));
+		}
+		else {
+			query.with(Sort.by(Sort.Direction.DESC, key));
+		}
+	}
+return template.find(query,User.class);
 }
 
 @Override

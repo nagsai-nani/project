@@ -43,9 +43,9 @@ public UserResponse getUser(String userName) {
 	return resp;
 }
 
-public List<UserResponse> getAll() {
+public List<UserResponse> getAll(String key, boolean order) {
 	
-	List<User> users =dao.getAll();
+	List<User> users =dao.getAll(key,order);
 	List<UserResponse> response =new ArrayList<UserResponse>();
 	UserResponse resp=null;
 	for (User user : users) {
