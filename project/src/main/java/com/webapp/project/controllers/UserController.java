@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +47,12 @@ public class UserController {
 	public ResponseEntity<String> update(@RequestBody UserUpdateDto dto) throws Exception{
 		service.update(dto);
 		return ResponseEntity.ok("UPDATED SUCCESSFULLY");
+		
+	}
+	
+	@GetMapping("/get/search/{searchString}")
+	public ResponseEntity<List<UserResponse>> getBySearchString(@PathVariable String searchString) throws Exception{
+		return ResponseEntity.ok(service.getBySearchString(searchString));
 		
 	}
 }
