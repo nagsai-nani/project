@@ -51,7 +51,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/get/search/{searchString}")
-	public ResponseEntity<List<UserResponse>> getBySearchString(@PathVariable String searchString){
+	public ResponseEntity<List<UserResponse>> getBySearchString(@PathVariable String searchString) throws Exception{
 		return ResponseEntity.ok(service.getBySearchString(searchString));
 		
 	}
