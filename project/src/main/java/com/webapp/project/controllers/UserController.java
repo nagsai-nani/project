@@ -49,4 +49,10 @@ public class UserController {
 		return ResponseEntity.ok("UPDATED SUCCESSFULLY");
 		
 	}
+	
+	@GetMapping("/get/search/{searchString}")
+	public ResponseEntity<List<UserResponse>> getBySearchString(@PathVariable String searchString){
+		return ResponseEntity.ok(service.getBySearchString(searchString));
+		
+	}
 }

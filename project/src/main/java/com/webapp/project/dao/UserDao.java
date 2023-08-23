@@ -17,6 +17,8 @@ public interface UserDao {
 
 	long updateUser(UserUpdateDto dto);
 
+	List<User> getUserBySearchString(String searchString);
+
 	
 	
 

@@ -2,11 +2,9 @@ package com.webapp.project.dao.impl;
 
 import java.util.List;
 
-import javax.swing.SortOrder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -71,5 +69,16 @@ public long updateUser(UserUpdateDto dto) {
 	update.set("password", dto.getPassword());
 	UpdateResult rs=template.updateFirst(query, update, User.class);
 	return rs.getModifiedCount();
+}
+
+@Override
+public List<User> getUserBySearchString(String searchString) {
+	Query query =new Query();
+	query.addCriteria(new Criteria().orOperator
+			(Criteria.where("city").regex(searchString),
+			(Criteria.where("userName").regex(searchString)),
+			(Criteria.where("village").regex(searchString)),
+			Criteria.where("company").regex(searchString)));
+	return template.find(query, User.class);
 }
 }

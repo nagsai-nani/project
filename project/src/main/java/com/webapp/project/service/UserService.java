@@ -91,4 +91,20 @@ if(count<=0) {
 }
 }
 
+public List<UserResponse> getBySearchString(String searchString) {
+	List<User> users =dao.getUserBySearchString(searchString);
+	List<UserResponse> response=new ArrayList<UserResponse>();
+	UserResponse resp=null;
+	for (User user : users) {
+		resp=new UserResponse();
+		resp.setCity(user.getCity());
+		resp.setCompany(user.getCompany());
+		resp.setEmail(user.getEmail());
+		resp.setPincode(user.getPincode());
+		resp.setUserName(user.getUserName());
+		response.add(resp);
+	}
+	return response;
+}
+
 }
