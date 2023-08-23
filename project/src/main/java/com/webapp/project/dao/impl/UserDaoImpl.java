@@ -74,6 +74,7 @@ public long updateUser(UserUpdateDto dto) {
 @Override
 public List<User> getUserBySearchString(String searchString) {
 	Query query =new Query();
+	
 	query.addCriteria(new Criteria().orOperator
 			(Criteria.where("city").regex(searchString),
 			(Criteria.where("userName").regex(searchString)),

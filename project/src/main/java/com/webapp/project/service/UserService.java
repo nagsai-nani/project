@@ -93,10 +93,10 @@ if(count<=0) {
 
 public List<UserResponse> getBySearchString(String searchString) throws Exception {
 	List<User> users =dao.getUserBySearchString(searchString);
-	if(searchString==null) {
+	if(searchString==null||searchString.isEmpty()) {
 		throw new Exception("Pl. Provide the required string.");
 	}
-	if(users==null) {
+	if(users==null||users.size()==0) {
 		throw new Exception("No records on search");
 		}
 	List<UserResponse> response=new ArrayList<UserResponse>();
